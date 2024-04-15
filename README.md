@@ -11,11 +11,11 @@ The following table shows the recommended versions to use for permissionless nod
 | mainnet   | [v0.3.7](https://github.com/okx/xlayer-node/releases/tag/v0.3.7)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
 | testnet   | [v0.3.7](https://github.com/okx/xlayer-node/releases/tag/v0.3.7)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
 
-## File Navigation
+## Document Navigation
 
 | testnet      |  mainnet  |
 | ---       | ---               |
-|   [genesis config file](./testnet/genesis.config.json)     |   [genesis config file](./mainnet/genesis.config.json)   |
 |   [setup permission less rpc node](./testnet/setup-production-zknode.md)      |   [setup permission less rpc node](./mainnet/setup-production-zknode.md)   |
+|   [genesis config file](./testnet/genesis.config.json)     |   [genesis config file](./mainnet/genesis.config.json)   |
 |   [fix rpc mismath](./testnet/resync-rpc-node.md)      |    |
 |   [upgrade rpc node to fork9](./testnet/upgrade_rpc_fork9.md)      |    |
