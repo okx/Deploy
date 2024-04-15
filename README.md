@@ -4,7 +4,7 @@ X Layer is a ZK L2 network powered by the OKB token and built using Polygon CDK,
 X Layer aims to connect the OKX and Ethereum communities to allow anyone to take part in a truly global onchian ecosystem.
 
 ## Mainnet/Testnet versions
-The following table shows the recommended versions to use for permissionless nodes:
+The following table shows the recommended versions to use for permitssionless nodes:
 
 | Network   | Node      | Prover/Executor   |
 | ---       | ---       | ---               |
@@ -15,7 +15,7 @@ The following table shows the recommended versions to use for permissionless nod
 
 | testnet      |  mainnet  |
 | ---       | ---               |
-|   [setup permission less rpc node](./testnet/setup-production-zknode.md)      |   [setup permission less rpc node](./mainnet/setup-production-zknode.md)   |
+|   [setup permitssion less rpc node](./testnet/setup-production-zknode.md)      |   [setup permitssion less rpc node](./mainnet/setup-production-zknode.md)   |
 |   [genesis config file](./testnet/genesis.config.json)     |   [genesis config file](./mainnet/genesis.config.json)   |
-|   [fix rpc mismath](./testnet/resync-rpc-node.md)      |    |
+|   [fix rpc mismatch](./testnet/resync-rpc-node.md)      |    |
 |   [upgrade rpc node to fork9](./testnet/upgrade_rpc_fork9.md)      |    |

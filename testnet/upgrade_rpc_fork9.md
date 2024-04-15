@@ -1,5 +1,5 @@
 # upgrade testnet rpc fork.9
-XLayer Testnet has been upgraded to Fork9. You can upgrade permission less rpc nodes in two ways. 
+XLayer Testnet has been upgraded to Fork9. You can upgrade permitssion less rpc nodes in two ways. 
 
 For more detailed information, please refer to:https://www.okx.com/zh-hans/xlayer/docs/developer/setup-zknode/setup-production-zknode
 ## 1.Re-download the script and snapshot. It will take about 3 hours. (Recommended)

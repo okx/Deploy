@@ -1,4 +1,4 @@
-When your permissionless RPC encounters a mismatch, you can use this method to restore it.
+When your permitssionless RPC encounters a mismatch, you can use this method to restore it.
 
 ## 1 Stop xlayer-sync and xlayer-rpc services
 ``` bash
