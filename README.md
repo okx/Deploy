@@ -1,0 +1,1 @@
+Deploy information for X Layer both mainnet and testnet.
