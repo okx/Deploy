@@ -9,6 +9,7 @@ cdk-erigon is a fork of Erigon, optimized for syncing with the XLayer network.
 ### Network Components
 ``` bash
 git clone https://github.com/okx/xlayer-erigon 
+cd xlayer-erigon
 git checkout release/v0.3.1
 cp xlayerconfig-mainnet.yaml.example xlayerconfig-mainnet.yaml
 # modify datadir and zkevm.l2-datastreamer-url
