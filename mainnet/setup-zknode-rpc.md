@@ -1,4 +1,16 @@
 # Setup RPC zkNode
+
+Re-download the script and snapshot will take about 1 hours.
+``` bash
+# Quick Commands
+apt install axel  # Parallel download tools
+apt install pigz  # Parallel compression tools
+wget https://static.okex.org/cdn/chain/xlayer/snapshot/run_xlayer_mainnet.sh && chmod +x run_xlayer_mainnet.sh && ./run_xlayer_mainnet.sh init && cp ./mainnet/example.env ./mainnet/.env
+vim ./mainnet/.env # Modify XLAYER_NODE_ETHERMAN_URL = "http://your.L1node.url"
+./run_xlayer_mainnet.sh restore 
+./run_xlayer_mainnet.sh start
+```
+
 X Layer is now available on the Mainnet for developers to launch smart contracts, execute transactions, and experiment with the network. This tutorial extends the exploration by allowing developers to launch their own node on the Public network.
 Before we begin, this document is fairly technical and requires prior exposure to Docker and CLI. Post spinning up your zkNode instance, you will be able to run the Synchronizer and utilize the JSON-RPC interface.
 
