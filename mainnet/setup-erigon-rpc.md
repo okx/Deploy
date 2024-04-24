@@ -13,6 +13,6 @@ cd xlayer-erigon
 git checkout release/v0.3.1
 cp xlayerconfig-mainnet.yaml.example xlayerconfig-mainnet.yaml
 # vim xlayerconfig-mainnet.yaml,  and modify datadir and zkevm.l2-datastreamer-url
-make ckd-erigon
+make cdk-erigon
 ./build/bin/cdk-erigon --config="./xlayerconfig-mainnet.yaml"
 ```
