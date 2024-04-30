@@ -1,9 +1,8 @@
 Welcome to X Layer
+
 X Layer is a ZK L2 network powered by the OKB token and built using Polygon CDK, that offers 100% EVM compatibility, exceptional performance, low fees, and robust security — achieved with seamless integration.
 
-X Layer aims to connect the OKX and Ethereum communities to allow anyone to take part in a truly global onchian ecosystem.
-
-## Mainnet/Testnet zkEVM Versions
+## Mainnet/Testnet zkEVM RPC Versions
 The following table shows the recommended versions to use for permitssionless nodes:
 
 | Network   | Node      | Prover/Executor   |
