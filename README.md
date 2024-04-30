@@ -3,13 +3,13 @@ X Layer is a ZK L2 network powered by the OKB token and built using Polygon CDK,
 
 X Layer aims to connect the OKX and Ethereum communities to allow anyone to take part in a truly global onchian ecosystem.
 
-## Mainnet/Testnet zkemvm versions
+## Mainnet/Testnet zkEVM versions
 The following table shows the recommended versions to use for permitssionless nodes:
 
 | Network   | Node      | Prover/Executor   |
 | ---       | ---       | ---               |
-| mainnet   | [v0.3.7](https://github.com/okx/xlayer-node/releases/tag/v0.3.7)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
-| testnet   | [v0.3.7](https://github.com/okx/xlayer-node/releases/tag/v0.3.7)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
+| mainnet   | [v0.3.8](https://github.com/okx/xlayer-node/releases/tag/v0.3.8)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
+| testnet   | [v0.3.8](https://github.com/okx/xlayer-node/releases/tag/v0.3.8)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
 
 
 ## Mainnet/Testnet erigon rpc versions
