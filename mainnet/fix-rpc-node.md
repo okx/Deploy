@@ -10,7 +10,6 @@ docker stop xlayer-rpc
 PGPASSWORD=state_password psql -h 127.0.0.1 -p 5432 -d state_db -U state_user
 
 SELECT max(batch_num) FROM state.verified_batch;
-# Use the batch_num above  to perform the resync from a specific batch (e.g. 330000):
 ```
 
 ## 3 Look for the target block and batch to delete
