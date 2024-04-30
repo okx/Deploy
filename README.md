@@ -24,7 +24,7 @@ The following table shows the recommended versions to use for permitssionless no
 
 | testnet      |  mainnet  |
 | ---       | ---               |
-|   [setup zkevm rpc node](./testnet/setup-zknode-rpc.md)      |   [setup zkevm rpc node](./mainnet/setup-zknode-rpc.md)   |
+|   [setup/upgrade zkevm rpc node](./testnet/setup-zknode-rpc.md)      |   [setup/upgrade zkevm rpc node](./mainnet/setup-zknode-rpc.md)   |
 |   [setup erigon rpc node](./testnet/setup-erigon-rpc.md)      |   [setup erigon rpc node](./mainnet/setup-erigon-rpc.md)   |
 |   [genesis config file](./testnet/genesis.config.json)     |   [genesis config file](./mainnet/genesis.config.json)   |
-|   [fix rpc mismatch](./testnet/resync-rpc-node.md)      |    |
+|   [fix rpc node db](./testnet/fix-rpc-node.md)      |        [fix rpc node db](./mainnet/fix-rpc-node.md) 
