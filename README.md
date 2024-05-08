@@ -16,8 +16,8 @@ The following table shows the recommended versions to use for permitssionless no
 
 | Network   | Erigon RPC      |
 | ---       | ---       |   
-| Mainnet   | [v0.3.1](https://github.com/okx/xlayer-erigon/tree/release/v0.3.1)  |
-| Testnet   | [v0.3.1](https://github.com/okx/xlayer-erigon/tree/release/v0.3.1)  |
+| Mainnet   | [v0.3.2](https://github.com/okx/xlayer-erigon/releases/tag/v0.3.2)  |
+| Testnet   | [v0.3.2](https://github.com/okx/xlayer-erigon/releases/tag/v0.3.2)  |
 
 ## Document Navigation
 
