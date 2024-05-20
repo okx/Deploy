@@ -7,17 +7,12 @@ The following table shows the recommended versions to use for permitssionless no
 
 | Network   | Node      | Prover/Executor   |
 | ---       | ---       | ---               |
-| Mainnet   | [v0.3.8](https://github.com/okx/xlayer-node/releases/tag/v0.3.8)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
-| Testnet   | [v0.3.8](https://github.com/okx/xlayer-node/releases/tag/v0.3.8)    |  [v0.3.1](https://github.com/okx/xlayer-prover/releases/tag/v0.3.1)    |
+| Mainnet   | [v0.3.10](https://github.com/okx/xlayer-node/releases/tag/v0.3.10)    |  [v0.3.2](https://github.com/okx/xlayer-prover/releases/tag/v0.3.2)    |
+| Testnet   | [v0.3.10](https://github.com/okx/xlayer-node/releases/tag/v0.3.10)    |  [v0.3.2](https://github.com/okx/xlayer-prover/releases/tag/v0.3.2)    |
 
 
 ## Erigon RPC Versions
-The following table shows the recommended versions to use for permitssionless nodes:
-
-| Network   | Erigon RPC      |
-| ---       | ---       |   
-| Mainnet   | [v0.3.2](https://github.com/okx/xlayer-erigon/releases/tag/v0.3.2)  |
-| Testnet   | [v0.3.2](https://github.com/okx/xlayer-erigon/releases/tag/v0.3.2)  |
+Please refer to [cdk-erigon](https://github.com/0xPolygonHermez/cdk-erigon)
 
 ## Document Navigation
 
