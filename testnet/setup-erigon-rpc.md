@@ -12,7 +12,7 @@ cdk-erigon is a fork of Erigon, optimized for syncing with the XLayer network.
 ``` bash
 git clone https://github.com/0xPolygonHermez/cdk-erigon.git
 cd cdk-erigon
-git checkout v1.1.5.6 #[the latest release version]
+git checkout v1.1.5.6 #[checkout the latest release version]
 
 make cdk-erigon
 ```
@@ -32,7 +32,7 @@ zkevm.address-admin: "0x14509f825e550745CFF827a9bDCCB4C3ad3FFd36"
 zkevm.address-rollup: "0x6662621411A8DACC3cA7049C8BddABaa9a999ce3"
 zkevm.address-ger-manager: "0x66E61bA00F58b857A9DD2C500F3aBc424A46BD20"
 ```
-#### Snapshot
+#### Snapshot(Optional)
 To quickly restore the Erigon network, you can download the snapshot and extract it.
 ``` bash
 wget https://static.okex.org/cdn/chain/xlayer/snapshot/xlayer-erigon-testnet-snap-202407081247.tar.gz
