@@ -26,9 +26,9 @@ Modfiy and replace params like this:
 datadir: /your/data/dir
 zkevm.l1-rpc-url:  http://your-l1-rpc-url:8545
 
-zkevm.address-sequencer: "0x148Ee7dAF16574cD020aFa34CC658f8F3fbd2800"
-zkevm.address-zkevm: "0x519E42c24163192Dca44CD3fBDCEBF6be9130987"
-zkevm.address-admin: "0x242daE44F5d8fb54B198D03a94dA45B5a4413e21"
+zkevm.address-sequencer: "0xAF9d27ffe4d51eD54AC8eEc78f2785D7E11E5ab1"
+zkevm.address-zkevm: "0x2B0ee28D4D51bC9aDde5E58E295873F61F4a0507"
+zkevm.address-admin: "0x491619874b866c3cDB7C8553877da223525ead01"
 zkevm.address-rollup: "0x5132A183E9F3CB7C848b0AAC5Ae0c4f0491B7aB2"
 zkevm.address-ger-manager: "0x580bda1e7A0CFAe92Fa7F6c20A3794F169CE3CFb"
 ```
