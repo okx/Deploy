@@ -7,7 +7,7 @@ The following table shows the recommended versions to use for permitssionless no
 
 | Network   | Node      | Prover/Executor   |
 | ---       | ---       | ---               |
-| Mainnet   | [v0.3.10](https://github.com/okx/xlayer-node/releases/tag/v0.3.10)    |  [v0.3.2](https://github.com/okx/xlayer-prover/releases/tag/v0.3.2)    |
+| Mainnet   | [v0.4.0](https://github.com/okx/xlayer-node/releases/tag/v0.4.0)    |  [v0.3.2](https://github.com/okx/xlayer-prover/releases/tag/v0.3.2)    |
 | Testnet   | [v0.4.0](https://github.com/okx/xlayer-node/releases/tag/v0.4.0)    |  [v0.3.2](https://github.com/okx/xlayer-prover/releases/tag/v0.3.2)    |
 
 
