@@ -1,0 +1,34 @@
+# CONTAINER FOR BUILDING BINARY
+FROM golang:1.21 AS build
+
+# INSTALL DEPENDENCIES
+RUN go install github.com/gobuffalo/packr/v2/packr2@v2.8.3
+COPY ./xlayer-sequence-sender/go.mod /src/xlayer-sequence-sender/
+COPY ./xlayer-sequence-sender/go.sum /src/xlayer-sequence-sender/
+
+COPY ./xlayer-ethtx-manager/go.mod /src/xlayer-ethtx-manager/
+COPY ./xlayer-ethtx-manager/go.sum /src/xlayer-ethtx-manager/
+
+COPY ./xlayer-synchronizer-l1/go.mod /src/xlayer-synchronizer-l1/
+COPY ./xlayer-synchronizer-l1/go.sum /src/xlayer-synchronizer-l1/
+
+
+# BUILD BINARY
+COPY . /src/
+RUN cd /src/xlayer-sequence-sender && go mod download
+RUN cd /src/xlayer-sequence-sender && make build
+
+# CONTAINER FOR RUNNING BINARY
+FROM alpine:3.19.0
+
+ARG USER=seqsender
+RUN adduser -D $USER
+USER $USER
+WORKDIR /app
+
+COPY --from=build --chown=$USER --chmod=100 /src/xlayer-sequence-sender/dist/zkevm-seqsender .
+
+RUN mkdir -p data && chown $USER. data
+VOLUME ["/app/data"]
+
+CMD ["/app/zkevm-seqsender run"]

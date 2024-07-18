@@ -1,0 +1,27 @@
+# CONTAINER FOR BUILDING BINARY
+FROM golang:1.21 AS build
+
+# INSTALL DEPENDENCIES
+RUN go install github.com/gobuffalo/packr/v2/packr2@v2.8.3
+COPY ./xlayer-aggregator/go.mod /src/xlayer-aggregator/
+COPY ./xlayer-aggregator/go.sum /src/xlayer-aggregator/
+
+COPY ./xlayer-ethtx-manager/go.mod /src/xlayer-ethtx-manager/
+COPY ./xlayer-ethtx-manager/go.sum /src/xlayer-ethtx-manager/
+
+COPY ./xlayer-synchronizer-l1/go.mod /src/xlayer-synchronizer-l1/
+COPY ./xlayer-synchronizer-l1/go.sum /src/xlayer-synchronizer-l1/
+
+
+# BUILD BINARY
+COPY . /src/
+RUN cd /src/xlayer-aggregator && go mod download
+RUN cd /src/xlayer-aggregator/db && packr2
+RUN cd /src/xlayer-aggregator && make build
+
+# CONTAINER FOR RUNNING BINARY
+FROM alpine:3.18.4
+COPY --from=build /src/xlayer-aggregator/dist/zkevm-aggregator /app/zkevm-aggregator
+RUN apk update && apk add postgresql15-client
+EXPOSE 8123
+CMD ["/bin/sh", "-c", "/app/zkevm-aggregator run"]
