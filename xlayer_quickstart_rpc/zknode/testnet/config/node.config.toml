@@ -1,0 +1,190 @@
+IsTrustedSequencer = false
+ForkUpgradeBatchNumber=0
+ForkUpgradeNewForkId=0
+Fork9UpgradeBatch=476000
+
+[Log]
+Environment = "development" # "production" or "development"
+Level = "info"
+Outputs = ["stderr"]
+
+[State]
+    [State.DB]
+    User = "state_user"
+    Password = "state_password"
+    Name = "state_db"
+    Host = "xlayer-state-db"
+    Port = "5432"
+    EnableLog = false
+    MaxConns = 200
+    [State.Batch]
+        [State.Batch.Constraints]
+        MaxTxsPerBatch = 300
+        MaxBatchBytesSize = 108000
+        MaxCumulativeGasUsed = 30000000
+        MaxKeccakHashes = 1930
+        MaxPoseidonHashes = 227121
+        MaxPoseidonPaddings = 121671
+        MaxMemAligns = 212926
+        MaxArithmetics = 212926
+        MaxBinaries = 425853
+        MaxSteps = 6813484
+        MaxSHA256Hashes = 1436
+
+[Pool]
+FreeClaimGasLimit = 1500000
+IntervalToRefreshBlockedAddresses = "5m"
+IntervalToRefreshGasPrices = "5s"
+MaxTxBytesSize=100132
+MaxTxDataBytesSize=100000
+DefaultMinGasPriceAllowed = 5000000000
+MinAllowedGasPriceInterval = "5m"
+PollMinAllowedGasPriceInterval = "15s"
+AccountQueue = 128
+GlobalQueue = 0
+    [Pool.EffectiveGasPrice]
+        Enabled = false
+        L1GasPriceFactor = 0.25
+        ByteGasCost = 16
+        ZeroByteGasCost = 4
+        NetProfit = 1
+        BreakEvenFactor = 1.1
+        FinalDeviationPct = 10
+        EthTransferGasPrice = 0
+        EthTransferL1GasPriceFactor = 0
+        L2GasPriceSuggesterFactor = 0.5
+    [Pool.DB]
+        User = "pool_user"
+        Password = "pool_password"
+        Name = "pool_db"
+        Host = "xlayer-pool-db"
+        Port = "5432"
+        EnableLog = false
+        MaxConns = 200
+
+[Etherman]
+URL = ""
+MultiGasProvider = false
+    [Etherscan]
+    ApiKey = ""
+
+[RPC]
+Host = "0.0.0.0"
+Port = 8545
+ReadTimeout = "60s"
+WriteTimeout = "60s"
+MaxRequestsPerIPAndSecond = 50000
+SequencerNodeURI = ""
+EnableL2SuggestedGasPricePolling = true
+EnablePendingTransactionFilter = false
+BatchRequestsEnabled = true
+BatchRequestsLimit = 20
+MaxLogsCount = 10000
+MaxLogsBlockRange = 10000
+MaxNativeBlockHashBlockRange = 60000
+EnableHttpLog = true
+GasLimitFactor = 1
+DisableAPIs = []
+    [RPC.WebSockets]
+        Enabled = true
+        Port = 10443
+    [RPC.RateLimit]
+        Enabled = false
+        RateLimitApis = ["eth_getLogs"]
+        RateLimitCount = 100
+        RateLimitDuration = 1
+        SpecialApis = [
+            {Api = "eth_newFilter", Count = 100, Duration = 1}
+        ]
+
+[Synchronizer]
+SyncInterval = "1s"
+SyncChunkSize = 100
+TrustedSequencerURL = "" # If it is empty or not specified, then the value is read from the smc.
+
+[Sequencer]
+DeletePoolTxsL1BlockConfirmations = 100
+DeletePoolTxsCheckInterval = "12h"
+TxLifetimeCheckInterval = "10m"
+TxLifetimeMax = "6h"
+LoadPoolTxsCheckInterval = "500ms"
+StateConsistencyCheckInterval = "5s"
+GasPriceMultiple = 5
+    [Sequencer.Finalizer]
+        NewTxsWaitInterval = "100ms"
+        ForcedBatchesTimeout = "5s"
+        ForcedBatchesL1BlockConfirmations = 0
+        ForcedBatchesCheckInterval = "10s"
+        L1InfoTreeL1BlockConfirmations = 0
+        L1InfoTreeCheckInterval = "10s"
+        BatchMaxDeltaTimestamp = "300s"
+        L2BlockMaxDeltaTimestamp = "10s"
+        ResourceExhaustedMarginPct = 10
+        HaltOnBatchNumber = 0
+        SequentialBatchSanityCheck = false
+        SequentialProcessL2Block = true
+        [Sequencer.Finalizer.Metrics]
+            Interval = "60m"
+            EnableLog = true
+        [Sequencer.StreamServer]
+            Port = 6900
+            Filename = "/datastreamer/datastream.bin"
+            Enabled = false
+
+[SequenceSender]
+WaitPeriodSendSequence = "300s"
+LastBatchVirtualizationTimeMaxWaitPeriod = "600s"
+MaxTxSizeForL1 = 131072
+MaxBatchesForL1 = 20
+L2Coinbase= "0x5E7B89AB3b2dE21F0f35dA4920b9d7310CCBe259"
+PrivateKey = {Path = "/pk/sequencer.keystore", Password = "password"}
+
+[Aggregator]
+Host = "0.0.0.0"
+Port = 50081
+ForkId = 2
+RetryTime = "5s"
+VerifyProofInterval = "10s"
+TxProfitabilityCheckerType = "acceptall"
+TxProfitabilityMinReward = "1.1"
+ProofStatePollingInterval = "5s"
+SenderAddress = "0x5E7B89AB3b2dE21F0f35dA4920b9d7310CCBe259"
+CleanupLockedProofsInterval = "2m"
+GeneratingProofCleanupThreshold = "10m"
+
+[EthTxManager]
+ForcedGas = 0
+PrivateKeys = [
+    {Path = "/pk/sequencer.keystore", Password = "password"},
+    {Path = "/pk/aggregator.keystore", Password = "password"}
+]
+
+[L2GasPriceSuggester]
+Type = "follower"
+UpdatePeriod = "10s"
+Factor = 0.5
+DefaultGasPriceWei = 1000000000
+
+[MTClient]
+URI  = "xlayer-prover:50061"
+
+[Executor]
+URI = "xlayer-prover:50071"
+
+[Metrics]
+Host = "0.0.0.0"
+Port = 9091
+Enabled = true
+ProfilingHost = "0.0.0.0"
+ProfilingPort = 6060
+ProfilingEnabled = true
+
+
+[HashDB]
+User = "prover_user"
+Password = "prover_pass"
+Name = "prover_db"
+Host = "xlayer-state-db"
+Port = "5432"
+EnableLog = false
+MaxConns = 200

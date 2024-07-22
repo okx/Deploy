@@ -1,0 +1,109 @@
+version: "3.5"
+networks:
+  default:
+    name: xlayer-mainnet
+services:
+  xlayer-mainnet-rpc:
+    container_name: xlayer-mainnet-rpc
+    restart: unless-stopped
+    depends_on:
+      xlayer-mainnet-pool-db:
+        condition: service_healthy
+      xlayer-mainnet-state-db:
+        condition: service_healthy
+      xlayer-mainnet-sync:
+        condition: service_started
+    image: ${XLAYER_NODE_IMAGE}
+    ports:
+      - 8545:8545
+      - 8546:8546
+      - 9091:9091 # needed if metrics enabled
+    environment:
+      - ZKEVM_NODE_ETHERMAN_URL=${XLAYER_NODE_ETHERMAN_URL}
+    volumes:
+      - ./config/node.config.toml:/app/config.toml
+      - ./config/genesis.config.json:/app/genesis.json
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "/app/xlayer-node run --network  custom --custom-network-file /app/genesis.json  --cfg /app/config.toml --components rpc"
+
+  xlayer-mainnet-sync:
+    container_name: xlayer-mainnet-sync
+    restart: unless-stopped
+    depends_on:
+      xlayer-mainnet-state-db:
+        condition: service_healthy
+    image: ${XLAYER_NODE_IMAGE}
+    ports:
+      - 9092:9091 # needed if metrics enabled
+    environment:
+      - ZKEVM_NODE_ETHERMAN_URL=${XLAYER_NODE_ETHERMAN_URL}
+      - ZKEVM_NODE_STATEDB_HOST=xlayer-mainnet-state-db
+    volumes:
+      - ./config/node.config.toml:/app/config.toml
+      - ./config/genesis.config.json:/app/genesis.json
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "/app/xlayer-node run --network custom --custom-network-file /app/genesis.json --cfg /app/config.toml --components synchronizer"
+
+  xlayer-mainnet-state-db:
+    container_name: xlayer-mainnet-state-db
+    restart: unless-stopped
+    image: postgres:14
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+    volumes:
+      - ./config/init_prover_db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ${XLAYER_NODE_STATEDB_DATA_DIR}:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=state_user
+      - POSTGRES_PASSWORD=state_password
+      - POSTGRES_DB=state_db
+    command:
+      - "postgres"
+      - "-N"
+      - "500"
+
+  xlayer-mainnet-pool-db:
+    container_name: xlayer-mainnet-pool-db
+    restart: unless-stopped
+    image: postgres:14
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5433:5432
+    volumes:
+      - ${XLAYER_NODE_POOLDB_DATA_DIR}:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=pool_user
+      - POSTGRES_PASSWORD=pool_password
+      - POSTGRES_DB=pool_db
+    command:
+      - "postgres"
+      - "-N"
+      - "500"
+
+  xlayer-mainnet-prover:
+    container_name: xlayer-mainnet-prover
+    restart: unless-stopped
+    image: ${XLAYER_PROVER_IMAGE}
+    depends_on:
+      xlayer-mainnet-state-db:
+        condition: service_healthy
+    ports:
+      - 50061:50061 # MT
+      - 50071:50071 # Executor
+    volumes:
+      - ./config/prover.config.json:/usr/src/app/config.json
+    command: >
+      zkProver -c /usr/src/app/config.json
