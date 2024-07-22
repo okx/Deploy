@@ -2,23 +2,7 @@
 set -e
 
 BASEDIR=$(pwd)
-WORKSPACE="$BASEDIR/testnet"
-
-rename() {
-    prefixes=("x1" "X1")
-    for prefix in "${prefixes[@]}"; do
-      if [ -d "$WORKSPACE/${prefix}_testnet_data" ]; then
-        mv "$WORKSPACE/${prefix}_testnet_data" "$WORKSPACE/xlayer_testnet_data"
-      fi
-
-      if [ -f "$WORKSPACE/.env" ]; then
-        sed -i "s/${prefix}_NODE_ETHERMAN_URL/XLAYER_NODE_ETHERMAN_URL/g" "$WORKSPACE/.env"
-        sed -i "s/${prefix}_NODE_STATEDB_DATA_DIR/XLAYER_NODE_STATEDB_DATA_DIR/g" "$WORKSPACE/.env"
-        sed -i "s/${prefix}_NODE_POOLDB_DATA_DIR/XLAYER_NODE_POOLDB_DATA_DIR/g" "$WORKSPACE/.env"
-        sed -i "s/${prefix}_testnet_data/xlayer_testnet_data/g" "$WORKSPACE/.env"
-      fi
-    done
-}
+WORKSPACE="$BASEDIR/mainnet"
 
 download () {
     if command -v axel &> /dev/null; then
@@ -73,17 +57,16 @@ function unpack() {
 
 branch=${BRANCH:-"main"}
 function download_init_file() {
-  download https://raw.githubusercontent.com/okx/Deploy/"$branch"/xlayer_quickstart_rpc/zknode/run_xlayer_testnet.sh run_xlayer_testnet.sh && chmod +x run_xlayer_testnet.sh
+  download https://raw.githubusercontent.com/okx/Deploy/"$branch"/setup/zknode/run_xlayer_mainnet.sh run_xlayer_mainnet.sh && chmod +x run_xlayer_mainnet.sh
   download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip "$branch".zip
   unzip "$branch".zip
-  mv Deploy-"$branch"/xlayer_quickstart_rpc/zknode/testnet "$WORKSPACE"/
+  mv Deploy-"$branch"/setup/zknode/mainnet "$WORKSPACE"/
   rm -rf Deploy-"$branch" "$branch".zip
 }
 
-
-
 function download_do_restore() {
-  latest_snap=$(remote_out https://static.okex.org/cdn/chain/xlayer/snapshot/testnet-latest)
+  rm -rf xlayer_mainnet_data
+  latest_snap=$(remote_out https://static.okex.org/cdn/chain/xlayer/snapshot/mainnet-latest)
   download https://static.okex.org/cdn/chain/xlayer/snapshot/"$latest_snap" "$latest_snap"
   echo "unpacking snapshot: $latest_snap"
   tar -zvxf "$latest_snap"
@@ -151,7 +134,6 @@ function help() {
     echo "  stop     Stop the rpc service."
     echo "  restart  Restart the rpc service."
     echo "  update   Update the rpc service to the latest version."
-    echo "  rename   Rename the file to new name."
     echo ""
     echo "Examples:"
     echo "  $0 init"
@@ -160,7 +142,6 @@ function help() {
     echo "  $0 stop"
     echo "  $0 restart"
     echo "  $0 update"
-    ehco "  $0 rename"
 }
 
 
@@ -192,13 +173,9 @@ function op() {
             echo "####### rpc service update #######"
             update
             ;;
-        "rename")
-            echo "####### rename file #######"
-            rename
-            ;;
         *)
             echo "Unknown operation: $1"
-            echo "[init, restore, start, stop, restart, update, rename] flag are support!"
+            echo "[init, restore, start, stop, restart, update] flag are support!"
             ;;
     esac
 }
