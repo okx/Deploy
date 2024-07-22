@@ -4,7 +4,7 @@ Re-download the script and snapshot will take about 3 hours.
 # Quick Commands
 apt install axel  # Parallel download tools
 apt install pigz  # Parallel compression tools
-wget https://static.okex.org/cdn/chain/xlayer/snapshot/run_xlayer_testnet.sh && chmod +x run_xlayer_testnet.sh && ./run_xlayer_testnet.sh init && cp ./testnet/example.env ./testnet/.env
+curl -fsSL https://raw.githubusercontent.com/okx/Deploy/main/setup/zknode/run_xlayer_testnet.sh | bash -s init && cp ./testnet/example.env ./testnet/.env
 vim ./testnet/.env # Modify XLAYER_NODE_ETHERMAN_URL = "http://your.L1node.url"
 ./run_xlayer_testnet.sh restore 
 ./run_xlayer_testnet.sh start
@@ -48,7 +48,7 @@ Let's start setting up our zkNode:
 ``` bash
 mkdir -p ./xlayer-node && cd ./xlayer-node
 # testnet
-wget curl -fsSL https://raw.githubusercontent.com/okx/Deploy/main/setup/zknode/run_xlayer_testnet.sh | bash -s init && cp ./testnet/example.env ./testnet/.env
+curl -fsSL https://raw.githubusercontent.com/okx/Deploy/main/setup/zknode/run_xlayer_testnet.sh | bash -s init && cp ./testnet/example.env ./testnet/.env
 ```
 
 2. The example.env file must be modified according to your configurations. Edit the .env file with your favourite editor (we'll use vim in this guide): 
