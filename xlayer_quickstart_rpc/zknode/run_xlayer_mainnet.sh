@@ -58,7 +58,7 @@ function unpack() {
 branch=${BRANCH:-"main"}
 function download_init_file() {
   download https://raw.githubusercontent.com/okx/Deploy/"$branch"/xlayer_quickstart_rpc/zknode/run_xlayer_mainnet.sh run_xlayer_mainnet.sh && chmod +x run_xlayer_mainnet.sh
-  download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip main.zip
+  download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip "$branch".zip
   unzip "$branch".zip
   mv Deploy-"$branch"/xlayer_quickstart_rpc/zknode/mainnet "$WORKSPACE"/
   rm -rf Deploy-"$branch"
