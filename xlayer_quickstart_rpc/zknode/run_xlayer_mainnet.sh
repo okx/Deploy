@@ -61,7 +61,7 @@ function download_init_file() {
   download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip "$branch".zip
   unzip "$branch".zip
   mv Deploy-"$branch"/xlayer_quickstart_rpc/zknode/mainnet "$WORKSPACE"/
-  rm -rf Deploy-"$branch"
+  rm -rf Deploy-"$branch" "$branch".zip
 }
 
 function download_do_restore() {
