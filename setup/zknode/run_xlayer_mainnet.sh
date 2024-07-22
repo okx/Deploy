@@ -60,7 +60,7 @@ function download_init_file() {
   download https://raw.githubusercontent.com/okx/Deploy/"$branch"/setup/zknode/run_xlayer_mainnet.sh run_xlayer_mainnet.sh && chmod +x run_xlayer_mainnet.sh
   download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip "$branch".zip
   unzip "$branch".zip
-  mv Deploy-"$branch"/setup/zknode/mainnet "$WORKSPACE"/
+  cp -r Deploy-"$branch"/setup/zknode/mainnet "$WORKSPACE"/
   rm -rf Deploy-"$branch" "$branch".zip
 }
 
