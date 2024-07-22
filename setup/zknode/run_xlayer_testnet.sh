@@ -3,6 +3,8 @@ set -e
 
 BASEDIR=$(pwd)
 WORKSPACE="$BASEDIR/testnet"
+prover="okexchain/xlayer-prover:v0.3.2_20240511023206_0af0a997"
+node="okexchain/xlayer-node:v0.3.10_20240520104049_01328c71"
 
 rename() {
     prefixes=("x1" "X1")
@@ -73,10 +75,11 @@ function unpack() {
 
 branch=${BRANCH:-"main"}
 function download_init_file() {
+  mkdir -p "$WORKSPACE"
   download https://raw.githubusercontent.com/okx/Deploy/"$branch"/setup/zknode/run_xlayer_testnet.sh run_xlayer_testnet.sh && chmod +x run_xlayer_testnet.sh
   download https://github.com/okx/Deploy/archive/refs/heads/"$branch".zip "$branch".zip
   unzip "$branch".zip
-  cp -r Deploy-"$branch"/setup/zknode/testnet "$WORKSPACE"/
+  cp -r Deploy-"$branch"/setup/zknode/testnet/* "$WORKSPACE"/
   rm -rf Deploy-"$branch" "$branch".zip
 }
 
@@ -121,24 +124,20 @@ function restore() {
 function start() {
   cd "$WORKSPACE" || exit 1
   check_l1_rpc
-  docker-compose --env-file .env -f ./docker-compose.yml up -d
+  XLAYER_PROVER_IMAGE="$prover" XLAYER_NODE_IMAGE="$node" docker-compose --env-file .env -f ./docker-compose.yml up -d
   cd "$BASEDIR" || exit 1
 }
 
 function stop() {
   cd "$WORKSPACE" || exit 1
   check_l1_rpc
-  docker-compose --env-file .env -f ./docker-compose.yml down
+  XLAYER_PROVER_IMAGE="$prover" XLAYER_NODE_IMAGE="$node" docker-compose --env-file .env -f ./docker-compose.yml down
   cd "$BASEDIR" || exit 1
 }
 
 function update() {
   download_init_file
-  cd "$WORKSPACE" || exit 1
-  check_l1_rpc
-  stop
-  start
-  cd "$BASEDIR" || exit 1
+  bash run_xlayer_testnet.sh restart
 }
 
 function help() {
