@@ -5,7 +5,7 @@ Re-download the script and snapshot will take about 1 hours.
 # Quick Commands
 apt install axel  # Parallel download tools
 apt install pigz  # Parallel compression tools
-wget curl -fsSL https://raw.githubusercontent.com/okx/Deploy/main/setup/zknode/run_xlayer_mainnet.sh | bash -s init && cp ./mainnet/example.env ./mainnet/.env
+curl -fsSL https://raw.githubusercontent.com/okx/Deploy/main/setup/zknode/run_xlayer_mainnet.sh | bash -s init && cp ./mainnet/example.env ./mainnet/.env
 vim ./mainnet/.env # Modify XLAYER_NODE_ETHERMAN_URL = "http://your.L1node.url"
 ./run_xlayer_mainnet.sh restore 
 ./run_xlayer_mainnet.sh start
