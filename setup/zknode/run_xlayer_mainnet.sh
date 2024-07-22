@@ -172,9 +172,6 @@ function op() {
             echo "####### rpc service update #######"
             update
             ;;
-        "env")
-          env
-          ;;
         *)
             echo "Unknown operation: $1"
             echo "[init, restore, start, stop, restart, update] flag are support!"
