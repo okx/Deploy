@@ -34,6 +34,7 @@ zkevm.address-ger-manager: "0x66E61bA00F58b857A9DD2C500F3aBc424A46BD20"
 ```
 #### Snapshot(Optional)
 The latest snapshot file can be found [here](https://static.okex.org/cdn/chain/xlayer/snapshot/erigon-testnet-snapshot.json)
+
 To quickly restore the Erigon network, you can download the snapshot and extract it.
 ``` bash
 wget https://static.okex.org/cdn/chain/xlayer/snapshot/xlayer-erigon-testnet-snap-202408060200.tar.gz
