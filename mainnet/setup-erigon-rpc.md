@@ -33,10 +33,11 @@ zkevm.address-rollup: "0x5132A183E9F3CB7C848b0AAC5Ae0c4f0491B7aB2"
 zkevm.address-ger-manager: "0x580bda1e7A0CFAe92Fa7F6c20A3794F169CE3CFb"
 ```
 #### Snapshot(Optional)
+The latest snapshot file can be found [here](https://static.okex.org/cdn/chain/xlayer/snapshot/erigon-mainnet-snapshot.json)
 To quickly restore the Erigon network, you can download the snapshot and extract it.
 ``` bash
-wget https://static.okex.org/cdn/chain/xlayer/snapshot/xlayer-erigon-mainnet-snap-202407161737.tar.gz
-tar xzvf xlayer-erigon-mainnet-snap-202407161737.tar.gz
+wget https://static.okex.org/cdn/chain/xlayer/snapshot/xlayer-erigon-mainnet-snap-202408140200.tar.gz
+tar xzvf xlayer-erigon-mainnet-snap-202408140200.tar.gz
 ```
 Replace the `datadir` in `xlayerconfig-mainnet.yaml` with the path to the extracted snapshot.
 
