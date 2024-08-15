@@ -37,8 +37,9 @@ The latest snapshot file can be found [here](https://static.okex.org/cdn/chain/x
 
 To quickly restore the Erigon network, you can download the snapshot and extract it.
 ``` bash
-wget https://static.okex.org/cdn/chain/xlayer/snapshot/xlayer-erigon-mainnet-snap-202408140200.tar.gz
-tar xzvf xlayer-erigon-mainnet-snap-202408140200.tar.gz
+latest_snapshot=`curl https://static.okex.org/cdn/chain/xlayer/snapshot/erigon-mainnet-latest`
+wget https://static.okex.org/cdn/chain/xlayer/snapshot/$latest_snapshot
+tar xzvf $latest_snapshot
 ```
 Replace the `datadir` in `xlayerconfig-mainnet.yaml` with the path to the extracted snapshot.
 
