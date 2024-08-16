@@ -12,7 +12,7 @@ cdk-erigon is a fork of Erigon, optimized for syncing with the XLayer network.
 ``` bash
 git clone https://github.com/0xPolygonHermez/cdk-erigon.git
 cd cdk-erigon
-git checkout v1.1.5.6 #[checkout the latest release version]
+git checkout v1.2.15.3 #[checkout the latest release version]
 
 make cdk-erigon
 ```
