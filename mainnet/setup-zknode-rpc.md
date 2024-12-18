@@ -1,3 +1,5 @@
+# **[Deprecated after ForkID13]**
+
 # Setup RPC zkNode
 
 Re-download the script and snapshot will take about 1 hours.
