@@ -34,7 +34,7 @@ zkevm.address-rollup: "0x5132A183E9F3CB7C848b0AAC5Ae0c4f0491B7aB2"
 zkevm.address-ger-manager: "0x580bda1e7A0CFAe92Fa7F6c20A3794F169CE3CFb"
 ```
 
-#### Recommended method to run (Using Docker)
+#### Recommended method to start (Using Docker)
 To avoid compatibility issues with GCC, GLIBC, and Go versions, we recommend using Docker:
 ```bash
 docker build -t cdk-erigon:latest .
