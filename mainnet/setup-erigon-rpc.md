@@ -101,4 +101,5 @@ docker run -it --rm \
     cdk-erigon:latest \
     --config=/home/erigon/xlayerconfig-mainnet.yaml
 ```
-Make sure to update your config file's datadir to point to /home/erigon/data.
+Make sure to update your config file's datadir to point to /home/erigon/data. The rest is same as the instructions above.
+
