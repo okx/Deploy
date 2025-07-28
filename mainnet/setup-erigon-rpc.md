@@ -72,7 +72,8 @@ private.api.addr: localhost:9091
 zkevm.l2-chain-id: 196
 zkevm.l2-sequencer-rpc-url: https://rpc.xlayer.tech
 zkevm.l2-datastreamer-url: stream.xlayer.tech:8800
-# Layer1 mainnet RPC address. For personal temporary testing, you can apply for it on related websites such as ankr. Note: This is only for personal testing. In a production environment, you need to apply to the company for an official RPC.
+# Layer1 mainnet RPC address. For personal temporary testing, you can apply for it on related websites such as ankr. 
+# Note: This is only for personal testing. In a production environment, you need to apply to the company for an official RPC.
 zkevm.l1-rpc-url: ${your-l1-rpc-url}
 zkevm.l1-chain-id: 1
 
