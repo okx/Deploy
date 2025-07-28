@@ -49,34 +49,22 @@ make build-docker
 
 
 
-#### Config
+#### Modfiy Config
+
+Create a configuration file named `xlayerconfig-mainnet.yaml` in the root directory of the project. Then, paste the following content into the file.
+**Please note:** There are two fields that need to be updated:
+
+1. `datadir` — specify your desired data directory path.
+2. `zkevm.l1_rpc_url` — provide the correct L1 RPC URL.For production environments, you should request an official RPC endpoint from your organization.
 
 ```bash
-# After the binary compilation is successful, start modifying the configuration files. 
-# xlayerconfig-mainnet.yaml.example  This file is used to connect to the Ethereum mainnet.
-# Choose to use the mainnet configuration, and rename the file as follows:
-
-cp xlayerconfig-mainnet.yaml.example xlayerconfig-mainnet.yaml
-```
-
-
-
-#### Modfiy Config:
-
-```bash
-# The following configuration items in xlayerconfig-mainnet.yaml need to be modified:
-
-# XLayer data storage directory, defined by yourself.
 datadir: ${your-data-dir}
-
 chain: xlayer-mainnet
 http: true
 private.api.addr: localhost:9091
 zkevm.l2-chain-id: 196
 zkevm.l2-sequencer-rpc-url: https://rpc.xlayer.tech
 zkevm.l2-datastreamer-url: stream.xlayer.tech:8800
-# Layer1 mainnet RPC address. For personal temporary testing, you can apply for it on related websites such as ankr. 
-# Note: This is only for personal testing. In a production environment, you need to apply to the company for an official RPC.
 zkevm.l1-rpc-url: ${your-l1-rpc-url}
 zkevm.l1-chain-id: 1
 
@@ -102,7 +90,7 @@ http.port: 8545
 #### Start Erigon Node By binary
 
 ```bash
-# Start the node. ./build/bin/cdk-erigon is the directory where the user's binary file is located, and --config="the directory of the configuration file to be used".
+# Start the node,./build/bin/cdk-erigon is the directory where the user's binary file is located, and --config="the directory of the configuration file to be used".
 ./build/bin/cdk-erigon --config="./xlayerconfig-mainnet.yaml"
 
 
