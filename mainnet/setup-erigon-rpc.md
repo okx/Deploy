@@ -89,8 +89,10 @@ http.port: 8545
 
 #### Start Erigon Node By binary
 
+To start the node, run the binary located at `./build/bin/cdk-erigon`.
+Use the `--config` flag to specify the path to the configuration file you want to use.
+
 ```bash
-# Start the node,./build/bin/cdk-erigon is the directory where the user's binary file is located, and --config="the directory of the configuration file to be used".
 ./build/bin/cdk-erigon --config="./xlayerconfig-mainnet.yaml"
 
 
