@@ -56,7 +56,6 @@ Create a configuration file named `xlayerconfig-mainnet.yaml` in the root direct
 
 1. `datadir` — specify your desired data directory path.
 2. `zkevm.l1_rpc_url` — provide the correct L1 RPC URL.For production environments, you should request an official RPC endpoint from your organization.
-3. `zkevm.l2-datastreamer-url` - stream.xlayer.tech:9800 or stream.xlayer.tech:8800 
 
 ```bash
 datadir: ${your-data-dir}
