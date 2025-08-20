@@ -37,7 +37,7 @@ https://github.com/okx/xlayer-erigon/releases
 git checkout ${latest_release}
 
 # Enter the cdk-erigon directory
-cd cdk-erigon
+cd xlayer-erigon
 
 # Build the project. This process takes about 1 minute. After completion, the binary file will be located in the build/bin directory of the project, and the binary file name is: cdk-erigon.
 make cdk-erigon
@@ -56,6 +56,7 @@ Create a configuration file named `xlayerconfig-mainnet.yaml` in the root direct
 
 1. `datadir` — specify your desired data directory path.
 2. `zkevm.l1_rpc_url` — provide the correct L1 RPC URL.For production environments, you should request an official RPC endpoint from your organization.
+3. `zkevm.l2-datastreamer-url` - stream.xlayer.tech:9800 or stream.xlayer.tech:8800 
 
 ```bash
 datadir: ${your-data-dir}
@@ -78,7 +79,8 @@ zkevm.l1-first-block: 19218658
 zkevm.l1-block-range: 2000
 zkevm.l1-query-delay: 1000
 zkevm.datastream-version: 3
-zkevm.increment-tree-always: true
+zkevm.increment-tree-always: false
+zkevm.rebuild-tree-after: 10000000
 
 http.api: [eth, debug, net, trace, web3, erigon, zkevm]
 http.addr: 0.0.0.0
