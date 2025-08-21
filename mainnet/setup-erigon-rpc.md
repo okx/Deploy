@@ -33,11 +33,11 @@ git clone https://github.com/okx/xlayer-erigon.git
 # If you are not aware of the latest version, you can use the following Github address to obtain the latest version：
 https://github.com/okx/xlayer-erigon/releases
 
+# Enter the cdk-erigon directory
+cd xlayer-erigon
+
 # Then based on https://github.com/okx/xlayer-erigon/releases Switch to the corresponding branch based on the latest version found on
 git checkout ${latest_release}
-
-# Enter the cdk-erigon directory
-cd cdk-erigon
 
 # Build the project. This process takes about 1 minute. After completion, the binary file will be located in the build/bin directory of the project, and the binary file name is: cdk-erigon.
 make cdk-erigon
@@ -78,7 +78,8 @@ zkevm.l1-first-block: 19218658
 zkevm.l1-block-range: 2000
 zkevm.l1-query-delay: 1000
 zkevm.datastream-version: 3
-zkevm.increment-tree-always: true
+zkevm.increment-tree-always: false
+zkevm.rebuild-tree-after: 10000000
 
 http.api: [eth, debug, net, trace, web3, erigon, zkevm]
 http.addr: 0.0.0.0
